@@ -67,8 +67,9 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Column - 3D Spline Model */}
+        {/* Right Column - 3D Spline Model with Watermark Coverage */}
         <div className="w-1/2 relative">
+          {/* Spline iframe */}
           <iframe 
             src="https://my.spline.design/cubeandballs-nY0aPWlHRObZibcWNtEtN9Pi/" 
             frameBorder="0" 
@@ -78,10 +79,52 @@ const Hero = () => {
             title="Spline 3D Model"
             style={{ border: 'none' }}
           />
+          
+          {/* Strategic watermark coverage overlays */}
+          {/* Bottom right corner overlay - where Spline watermark typically appears */}
+          <div className="absolute bottom-0 right-0 w-32 h-16 bg-gradient-to-tl from-black via-black/80 to-transparent z-10" />
+          
+          {/* Additional corner coverage with decorative elements */}
+          <div className="absolute bottom-2 right-2 z-20">
+            <motion.div
+              className="w-6 h-6 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full opacity-80"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.8, 1, 0.8]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </div>
+          
+          {/* Enhanced decorative overlay elements */}
+          <div className="absolute bottom-4 right-8 z-20">
+            <motion.div
+              className="w-3 h-3 bg-cyan-400 rounded-full opacity-70"
+              animate={{
+                y: [0, -10, 0],
+                opacity: [0.7, 1, 0.7]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </div>
+          
+          {/* Bottom edge gradient overlay for seamless blending */}
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
+          
+          {/* Right edge subtle overlay */}
+          <div className="absolute top-0 bottom-0 right-0 w-8 bg-gradient-to-l from-black/40 to-transparent z-10" />
         </div>
       </div>
 
-      {/* Mobile Layout (below md) - Overlay Layout */}
+      {/* Mobile Layout (below md) - Overlay Layout with Enhanced Watermark Coverage */}
       <div className="md:hidden min-h-screen relative">
         {/* Background 3D Spline Model - Full Screen */}
         <div className="absolute inset-0 w-full h-full">
@@ -95,9 +138,49 @@ const Hero = () => {
             style={{ border: 'none' }}
           />
           
-          {/* Overlay gradient for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
+          {/* Mobile watermark coverage - more comprehensive */}
+          <div className="absolute bottom-0 right-0 w-40 h-20 bg-gradient-to-tl from-black via-black/90 to-transparent z-10" />
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
+          
+          {/* Mobile decorative elements to mask watermark area */}
+          <div className="absolute bottom-3 right-3 z-20">
+            <motion.div
+              className="flex space-x-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+            >
+              <motion.div
+                className="w-2 h-2 bg-purple-400 rounded-full"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.6, 1, 0.6]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <motion.div
+                className="w-2 h-2 bg-cyan-400 rounded-full"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.6, 1, 0.6]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              />
+            </motion.div>
+          </div>
+          
+          {/* Original overlay gradients for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-5" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 z-5" />
         </div>
 
         {/* Text Content Overlay */}
@@ -196,6 +279,34 @@ const Hero = () => {
           ease: "easeInOut"
         }}
       />
+
+      {/* Additional ambient lighting effects */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.05, 0.15, 0.05]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.08, 0.18, 0.08]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
     </section>
   )
 }
