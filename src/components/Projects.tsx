@@ -1,163 +1,103 @@
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import {ExternalLink, Github, Eye, Code, Zap, Star} from 'lucide-react'
+import {ExternalLink, Github, Eye, Code, Zap, Star, Loader2} from 'lucide-react'
+import { fetchGitHubRepos, fetchVercelDeployments, transformToProjects, type Project } from '../services/api'
 
 const Projects = () => {
-  const projects = [
-    {
-      id: 1,
-      title: "TaskFlow Pro",
-      category: "Full Stack",
-      description: "Advanced task management platform with real-time collaboration, drag-and-drop functionality, team analytics, and project timeline visualization.",
-      image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["React", "Node.js", "MongoDB", "Socket.io", "TypeScript"],
-      features: ["Real-time collaboration", "Drag & drop interface", "Team analytics", "Timeline visualization", "Mobile responsive"],
-      demoUrl: "https://taskflow-pro-demo.netlify.app",
-      githubUrl: "https://github.com/emmerson-mutero/taskflow-pro",
-      status: "Live",
-      highlight: true
-    },
-    {
-      id: 2,
-      title: "EcoShop Marketplace",
-      category: "E-Commerce",
-      description: "Sustainable e-commerce platform featuring eco-friendly products, carbon footprint tracking, and green delivery options with integrated payment systems.",
-      image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["Next.js", "Stripe", "PostgreSQL", "Tailwind CSS", "Vercel"],
-      features: ["Carbon tracking", "Secure payments", "Inventory management", "Admin dashboard", "SEO optimized"],
-      demoUrl: "https://ecoshop-marketplace.vercel.app",
-      githubUrl: "https://github.com/emmerson-mutero/ecoshop-marketplace",
-      status: "Live"
-    },
-    {
-      id: 3,
-      title: "DataViz Analytics",
-      category: "Data Science",
-      description: "Interactive data visualization dashboard with AI-powered insights, predictive analytics, and customizable chart components for business intelligence.",
-      image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["React", "D3.js", "Python", "FastAPI", "TensorFlow"],
-      features: ["AI insights", "Interactive charts", "Predictive modeling", "Export capabilities", "Real-time updates"],
-      demoUrl: "https://dataviz-analytics-demo.netlify.app",
-      githubUrl: "https://github.com/emmerson-mutero/dataviz-analytics",
-      status: "Live"
-    },
-    {
-      id: 4,
-      title: "SocialHub Manager",
-      category: "Social Media",
-      description: "Comprehensive social media management platform with post scheduling, analytics tracking, content calendar, and multi-platform integration.",
-      image: "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["Vue.js", "Express.js", "Redis", "AWS S3", "Docker"],
-      features: ["Post scheduling", "Analytics dashboard", "Content calendar", "Team collaboration", "API integrations"],
-      demoUrl: "https://socialhub-manager.herokuapp.com",
-      githubUrl: "https://github.com/emmerson-mutero/socialhub-manager",
-      status: "Live"
-    },
-    {
-      id: 5,
-      title: "CryptoTracker Pro",
-      category: "Fintech",
-      description: "Real-time cryptocurrency tracking application with portfolio management, price alerts, market analysis, and trading insights.",
-      image: "https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["React Native", "Firebase", "CoinGecko API", "Chart.js", "Expo"],
-      features: ["Real-time prices", "Portfolio tracking", "Price alerts", "Market analysis", "Cross-platform"],
-      demoUrl: "https://cryptotracker-pro.expo.dev",
-      githubUrl: "https://github.com/emmerson-mutero/cryptotracker-pro",
-      status: "Live"
-    },
-    {
-      id: 6,
-      title: "HealthTrack Mobile",
-      category: "Healthcare",
-      description: "Personal health tracking mobile app with fitness monitoring, meal planning, medical records, and healthcare provider integration.",
-      image: "https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["Flutter", "Dart", "Firebase", "HealthKit", "Google Fit"],
-      features: ["Fitness tracking", "Meal planning", "Medical records", "Doctor integration", "Health insights"],
-      demoUrl: "https://healthtrack-mobile-demo.web.app",
-      githubUrl: "https://github.com/emmerson-mutero/healthtrack-mobile",
-      status: "Development"
-    },
-    {
-      id: 7,
-      title: "VR Architecture Studio",
-      category: "VR/AR",
-      description: "Virtual reality application for architectural visualization with immersive walkthroughs, real-time collaboration, and design modifications.",
-      image: "https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["Unity", "C#", "WebXR", "Three.js", "Blender"],
-      features: ["VR walkthroughs", "Real-time collaboration", "Design modifications", "Cross-platform VR", "Cloud sync"],
-      demoUrl: "https://vr-architecture-studio.netlify.app",
-      githubUrl: "https://github.com/emmerson-mutero/vr-architecture-studio",
-      status: "Development"
-    },
-    {
-      id: 8,
-      title: "AI Content Generator",
-      category: "AI/ML",
-      description: "AI-powered content generation platform with natural language processing, image generation, and automated content optimization for marketing.",
-      image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["Python", "OpenAI API", "React", "FastAPI", "PostgreSQL"],
-      features: ["Text generation", "Image creation", "Content optimization", "Multi-language support", "API integration"],
-      demoUrl: "https://ai-content-generator.vercel.app",
-      githubUrl: "https://github.com/emmerson-mutero/ai-content-generator",
-      status: "Live"
-    },
-    {
-      id: 9,
-      title: "EduLearn Platform",
-      category: "Education",
-      description: "Online learning platform with interactive courses, progress tracking, video streaming, assignments, and student-teacher communication.",
-      image: "https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["MERN Stack", "Socket.io", "AWS", "Stripe", "JWT"],
-      features: ["Interactive courses", "Progress tracking", "Video streaming", "Assignment system", "Real-time chat"],
-      demoUrl: "https://edulearn-platform.herokuapp.com",
-      githubUrl: "https://github.com/emmerson-mutero/edulearn-platform",
-      status: "Live"
-    },
-    {
-      id: 10,
-      title: "Weather Forecast Pro",
-      category: "Weather App",
-      description: "Advanced weather application with detailed forecasts, interactive maps, weather alerts, and location-based recommendations.",
-      image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["React", "OpenWeather API", "Mapbox", "Chart.js", "PWA"],
-      features: ["Detailed forecasts", "Interactive maps", "Weather alerts", "Location tracking", "Offline support"],
-      demoUrl: "https://weather-forecast-pro.netlify.app",
-      githubUrl: "https://github.com/emmerson-mutero/weather-forecast-pro",
-      status: "Live"
-    },
-    {
-      id: 11,
-      title: "BlogCraft CMS",
-      category: "Content Management",
-      description: "Modern content management system with rich text editor, media management, SEO optimization, and multi-author collaboration features.",
-      image: "https://images.pexels.com/photos/265667/pexels-photo-265667.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["Next.js", "Sanity CMS", "Vercel", "TypeScript", "Tailwind CSS"],
-      features: ["Rich text editor", "Media management", "SEO optimization", "Multi-author support", "Custom themes"],
-      demoUrl: "https://blogcraft-cms.vercel.app",
-      githubUrl: "https://github.com/emmerson-mutero/blogcraft-cms",
-      status: "Live"
-    },
-    {
-      id: 12,
-      title: "FoodDelivery Express",
-      category: "Food Delivery",
-      description: "Full-featured food delivery application with restaurant management, real-time order tracking, payment integration, and delivery optimization.",
-      image: "https://images.pexels.com/photos/4393426/pexels-photo-4393426.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["React Native", "Node.js", "MongoDB", "Stripe", "Google Maps"],
-      features: ["Restaurant management", "Order tracking", "Payment integration", "Delivery optimization", "Rating system"],
-      demoUrl: "https://fooddelivery-express.expo.dev",
-      githubUrl: "https://github.com/emmerson-mutero/fooddelivery-express",
-      status: "Development"
-    }
-  ]
+  const [projects, setProjects] = useState<Project[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const categories = ["All", "Full Stack", "E-Commerce", "Data Science", "Social Media", "Fintech", "Healthcare", "VR/AR", "AI/ML", "Education", "Weather App", "Content Management", "Food Delivery"]
+  const fetchProjects = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+
+      const [repos, deployments] = await Promise.all([
+        fetchGitHubRepos('emmersonmutero'),
+        fetchVercelDeployments('syOKxX8aycgEnhDrlTtdl8w0')
+      ])
+
+      const transformedProjects = transformToProjects(repos, deployments)
+      setProjects(transformedProjects)
+    } catch (err) {
+      setError('Failed to load projects. Please try again later.')
+      console.error('Error fetching projects:', err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchProjects()
+
+    // Set up periodic refresh every 5 minutes
+    const interval = setInterval(fetchProjects, 5 * 60 * 1000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+
+  const categories = ["All", "Full Stack", "E-Commerce", "Data Science", "Social Media", "Fintech", "Healthcare", "VR/AR", "AI/ML", "Education", "Content Management", "Food Delivery"]
   const [activeCategory, setActiveCategory] = React.useState("All")
 
-  const filteredProjects = activeCategory === "All" 
-    ? projects 
+  const filteredProjects = activeCategory === "All"
+    ? projects
     : projects.filter(project => project.category === activeCategory)
+
+  if (loading) {
+    return (
+      <section id="projects" className="min-h-screen py-20 relative flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 animate-spin text-purple-400 mx-auto mb-4" />
+          <p className="text-white/70 text-lg">Loading projects...</p>
+        </div>
+      </section>
+    )
+  }
+
+  if (error) {
+    return (
+      <section id="projects" className="min-h-screen py-20 relative flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-red-400 mb-4">
+            <Code className="w-12 h-12 mx-auto mb-2" />
+            <p className="text-lg font-semibold">Error Loading Projects</p>
+          </div>
+          <p className="text-white/70 mb-6">{error}</p>
+          <button
+            onClick={fetchProjects}
+            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300"
+          >
+            Try Again
+          </button>
+        </div>
+      </section>
+    )
+  }
+
+  if (projects.length === 0) {
+    return (
+      <section id="projects" className="min-h-screen py-20 relative flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-white/70 mb-4">
+            <Github className="w-12 h-12 mx-auto mb-2" />
+            <p className="text-lg font-semibold">No Projects Found</p>
+          </div>
+          <p className="text-white/60 mb-6">
+            No deployed projects found. Make sure your GitHub repositories are connected to Vercel deployments.
+          </p>
+          <button
+            onClick={fetchProjects}
+            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300"
+          >
+            Refresh
+          </button>
+        </div>
+      </section>
+    )
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },

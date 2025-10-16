@@ -1,5 +1,4 @@
 
-import React from 'react'
 import { motion } from 'framer-motion'
 
 const Hero = () => {
@@ -131,8 +130,8 @@ const Hero = () => {
           <iframe 
             src="https://my.spline.design/cubeandballs-nY0aPWlHRObZibcWNtEtN9Pi/" 
             frameBorder="0" 
-            width="100%" 
-            height="100%"
+            width="50%" 
+            height="50%"
             className="absolute inset-0 w-full h-full object-cover"
             title="Spline 3D Model Background"
             style={{ border: 'none' }}
