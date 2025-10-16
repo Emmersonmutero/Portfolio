@@ -1,4 +1,5 @@
 
+import React from 'react'
 import { motion } from 'framer-motion'
 import { Globe, Palette, Zap, Atom, Wind, Box, Rocket, Database, Flame, Figma, Code2 } from 'lucide-react'
 
@@ -12,39 +13,30 @@ type Skill = {
   icon: React.ComponentType<IconProps>
   category: string
   color: string
-  mastery: string
 }
 
 const Skills = () => {
   const skills = [
     // Core Frontend
-    { name: 'React', icon: Atom, category: 'Frontend', color: 'from-cyan-400 via-blue-500 to-indigo-500', mastery: 'expert' },
-    { name: 'JavaScript', icon: Zap, category: 'Frontend', color: 'from-yellow-400 via-orange-500 to-red-500', mastery: 'expert' },
-    { name: 'HTML5', icon: Globe, category: 'Frontend', color: 'from-orange-500 via-red-500 to-pink-500', mastery: 'expert' },
-    { name: 'CSS3', icon: Palette, category: 'Frontend', color: 'from-blue-500 via-cyan-500 to-teal-500', mastery: 'expert' },
-    { name: 'Tailwind', icon: Wind, category: 'Frontend', color: 'from-teal-400 via-cyan-500 to-blue-500', mastery: 'expert' },
-    
+    { name: 'React', icon: Atom, category: 'Frontend', color: 'from-cyan-400 via-blue-500 to-indigo-500' },
+    { name: 'JavaScript', icon: Zap, category: 'Frontend', color: 'from-yellow-400 via-orange-500 to-red-500' },
+    { name: 'HTML5', icon: Globe, category: 'Frontend', color: 'from-orange-500 via-red-500 to-pink-500' },
+    { name: 'CSS3', icon: Palette, category: 'Frontend', color: 'from-blue-500 via-cyan-500 to-teal-500' },
+    { name: 'Tailwind', icon: Wind, category: 'Frontend', color: 'from-teal-400 via-cyan-500 to-blue-500' },
+
     // Frameworks & Libraries
-    { name: 'Next.js', icon: Rocket, category: 'Framework', color: 'from-gray-600 via-slate-700 to-black', mastery: 'advanced' },
-    
+    { name: 'Next.js', icon: Rocket, category: 'Framework', color: 'from-gray-600 via-slate-700 to-black' },
+
     // Backend & Database
-    { name: 'Python', icon: Code2, category: 'Backend', color: 'from-green-400 via-blue-500 to-purple-500', mastery: 'advanced' },
-    { name: 'Supabase', icon: Database, category: 'Backend', color: 'from-green-400 via-emerald-500 to-cyan-500', mastery: 'advanced' },
-    { name: 'Firebase', icon: Flame, category: 'Backend', color: 'from-orange-400 via-red-500 to-pink-500', mastery: 'intermediate' },
-    
+    { name: 'Python', icon: Code2, category: 'Backend', color: 'from-green-400 via-blue-500 to-purple-500' },
+    { name: 'Supabase', icon: Database, category: 'Backend', color: 'from-green-400 via-emerald-500 to-cyan-500' },
+    { name: 'Firebase', icon: Flame, category: 'Backend', color: 'from-orange-400 via-red-500 to-pink-500' },
+
     // Design & 3D
-    { name: 'Figma', icon: Figma, category: 'Design', color: 'from-pink-500 via-violet-500 to-purple-500', mastery: 'expert' },
-    { name: 'Spline 3D', icon: Box, category: 'Design', color: 'from-purple-500 via-pink-500 to-rose-500', mastery: 'intermediate' }
+    { name: 'Figma', icon: Figma, category: 'Design', color: 'from-pink-500 via-violet-500 to-purple-500' },
+    { name: 'Spline 3D', icon: Box, category: 'Design', color: 'from-purple-500 via-pink-500 to-rose-500' }
   ]
 
-  const getMasteryColor = (mastery: string) => {
-    switch (mastery) {
-      case 'expert': return 'from-emerald-400 to-green-500'
-      case 'advanced': return 'from-blue-400 to-indigo-500'
-      case 'intermediate': return 'from-amber-400 to-orange-500'
-      default: return 'from-gray-400 to-gray-500'
-    }
-  }
 
   const SkillCard = ({ skill, index }: { skill: Skill, index: number }) => {
     const IconComponent = skill.icon
@@ -169,17 +161,6 @@ const Skills = () => {
               {skill.name}
             </motion.h3>
             
-            {/* Mastery indicator */}
-            <div className="flex items-center space-x-2">
-              <motion.div
-                className={`px-2 py-1 sm:px-3 sm:py-1 text-xs font-bold bg-gradient-to-r ${getMasteryColor(skill.mastery)} text-white rounded-full shadow-lg`}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.8 }}
-              >
-                {skill.mastery.toUpperCase()}
-              </motion.div>
-            </div>
             
             {/* Enhanced category badge */}
             <motion.span 
