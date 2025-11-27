@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 
 const About = () => {
   const highlights = [
-    { title: 'Experience', value: '5+ Years', icon: '💼' },
-    { title: 'Technologies', value: '15+ Tools', icon: '⚡' },
+    { title: 'Experience', value: '2+ Years', icon: '💼' },
+    { title: 'Technologies', value: '6+ Tools', icon: '⚡' },
     { title: 'Specialties', value: '3D Web Design', icon: '🎨' },
-    { title: 'Achievements', value: '50+ Projects', icon: '🏆' },
+    { title: 'Achievements', value: '5+ Projects', icon: '🏆' },
   ]
 
   return (
@@ -36,7 +36,7 @@ const About = () => {
           <h3 className="text-3xl font-bold">Passionate Developer</h3>
           <p className="text-lg text-white/80 leading-relaxed">
             I'm Emmerson Mutero, a creative web developer with a passion for crafting immersive digital experiences. 
-            With over 5 years of experience, I specialize in modern web technologies and 3D web design, bringing 
+            With over 2 years of experience, I specialize in modern web technologies and 3D web design, bringing 
             ideas to life through clean code and stunning visuals.
           </p>
           <p className="text-lg text-white/80 leading-relaxed">
