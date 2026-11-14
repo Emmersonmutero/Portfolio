@@ -1,0 +1,20 @@
+name: Refresh portfolio deployment
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deployment
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
+            echo "VERCEL_DEPLOY_HOOK is not configured; skipping deployment."
+            exit 0
+          fi
+          curl --fail --silent --show-error --max-time 30 --request POST "$VERCEL_DEPLOY_HOOK"

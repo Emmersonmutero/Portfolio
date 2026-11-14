@@ -1,4 +1,181 @@
 {
-  "generatedAt": null,
-  "repos": []
+  "generatedAt": "2026-11-14T21:40:40.249Z",
+  "repos": [
+    {
+      "name": "CareerZim",
+      "description": null,
+      "html_url": "https://github.com/Emmersonmutero/CareerZim",
+      "homepage": null,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "pushed_at": "2026-09-29T10:10:43Z",
+      "languages": [
+        "TypeScript",
+        "CSS",
+        "JavaScript"
+      ],
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "TypeScript"
+      ],
+      "summary": null,
+      "liveUrl": null
+    },
+    {
+      "name": "Emmerson-Mutero-Uncommon-Software-engineer-assessment",
+      "description": null,
+      "html_url": "https://github.com/Emmersonmutero/Emmerson-Mutero-Uncommon-Software-engineer-assessment",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "pushed_at": "2026-08-26T08:09:04Z",
+      "languages": [
+        "Python"
+      ],
+      "stack": [
+        "Pytest"
+      ],
+      "summary": "This repository contains the two parts of the assessment: a per-key in-memory rate limiter and a system design for a large-scale notification service.",
+      "liveUrl": null
+    },
+    {
+      "name": "Portfolio",
+      "description": null,
+      "html_url": "https://github.com/Emmersonmutero/Portfolio",
+      "homepage": "https://portfolio-eta-nine-57.vercel.app",
+      "language": "TypeScript",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "pushed_at": "2025-11-27T04:51:12Z",
+      "languages": [
+        "TypeScript",
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "stack": [
+        "React",
+        "Vite",
+        "Framer Motion",
+        "Tailwind CSS",
+        "TypeScript"
+      ],
+      "summary": null,
+      "liveUrl": "https://portfolio-eta-nine-57.vercel.app/"
+    },
+    {
+      "name": "Smart-Home",
+      "description": "Smart Home",
+      "html_url": "https://github.com/Emmersonmutero/Smart-Home",
+      "homepage": "https://smart-home-ten-livid.vercel.app",
+      "language": "TypeScript",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "pushed_at": "2025-10-08T08:14:57Z",
+      "languages": [
+        "TypeScript",
+        "JavaScript",
+        "CSS"
+      ],
+      "stack": [
+        "Next.js",
+        "React Three Fiber",
+        "GSAP",
+        "Framer Motion",
+        "Tailwind CSS",
+        "Stripe"
+      ],
+      "summary": "This platform provides users with product showcasing, device control simulation, e-commerce functionality, and comprehensive customer support.",
+      "liveUrl": "https://smart-home-ten-livid.vercel.app/"
+    },
+    {
+      "name": "superfertweb",
+      "description": null,
+      "html_url": "https://github.com/Emmersonmutero/superfertweb",
+      "homepage": "https://superfertweb.vercel.app",
+      "language": "CSS",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "pushed_at": "2025-06-30T13:42:49Z",
+      "languages": [
+        "CSS",
+        "JavaScript",
+        "HTML"
+      ],
+      "stack": [
+        "React",
+        "Vite",
+        "React Router"
+      ],
+      "summary": null,
+      "liveUrl": "https://superfertweb.vercel.app/"
+    },
+    {
+      "name": "flexbox",
+      "description": "Flexbox-Portfolio",
+      "html_url": "https://github.com/Emmersonmutero/flexbox",
+      "homepage": null,
+      "language": "CSS",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "pushed_at": "2025-06-10T11:27:08Z",
+      "languages": [
+        "CSS",
+        "HTML"
+      ],
+      "stack": [],
+      "summary": null,
+      "liveUrl": "https://flexbox.vercel.app"
+    },
+    {
+      "name": "Web_scraper",
+      "description": "Web  Scraper & Data Aggregator",
+      "html_url": "https://github.com/Emmersonmutero/Web_scraper",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "pushed_at": "2025-04-22T09:25:03Z",
+      "languages": [
+        "Python"
+      ],
+      "stack": [
+        "Pandas",
+        "BeautifulSoup",
+        "Requests"
+      ],
+      "summary": "C:\\Users\\uncommonStudent\\OneDrive\\Desktop\\Job-Scraper",
+      "liveUrl": null
+    },
+    {
+      "name": "payslip-generator",
+      "description": "payslip generator",
+      "html_url": "https://github.com/Emmersonmutero/payslip-generator",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "pushed_at": "2025-04-10T10:00:41Z",
+      "languages": [
+        "Python"
+      ],
+      "stack": [
+        "Pandas",
+        "FPDF"
+      ],
+      "summary": "This script generates individual payslips for employees in PDF format based on the data in an Excel file.",
+      "liveUrl": "https://payslip-generator.vercel.app"
+    }
+  ]
 }
