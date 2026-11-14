@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Header = () => {
@@ -60,7 +60,12 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden z-60">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
+            >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

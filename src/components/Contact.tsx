@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Github, Mail } from 'lucide-react';
+import { email, githubUrl, linkedInUrl } from '../data/site';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,15 +13,17 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (new FormData(e.currentTarget).get('website')) return;
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setErrorMessage('');
@@ -51,7 +54,7 @@ const Contact = () => {
           Accept: "application/json"
         },
         body: JSON.stringify({
-          access_key: "ee5b6cae-a6f6-42ca-b45a-1a23cd5f2d7f",
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY || 'ee5b6cae-a6f6-42ca-b45a-1a23cd5f2d7f',
           name: formData.name,
           email: formData.email,
           message: formData.message,
@@ -100,7 +103,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           className="text-center mb-16">
 
           <h2 className="text-5xl md:text-7xl font-bold mb-6">
@@ -120,9 +123,17 @@ const Contact = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}>
+              viewport={{ once: true, margin: '0px 0px 200px 0px' }}>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input
+                  type="text"
+                  name="website"
+                  hidden
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <div className="relative">
                   <input
                     type="text"
@@ -235,7 +246,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '0px 0px 200px 0px' }}
               className="space-y-8">
 
               <div>
@@ -266,9 +277,9 @@ const Contact = () => {
                 <h4 className="text-xl font-semibold">Connect with me</h4>
                 <div className="flex space-x-4">
                   {[
-                  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/emmerson-mutero-779170253' },
-                  { name: 'GitHub', icon: Github, href: 'https://github.com/Emmersonmutero' },
-                  { name: 'Email', icon: Mail, href: 'mailto:ej.mutero@gmail.com' }].
+                  { name: 'LinkedIn', icon: Linkedin, href: linkedInUrl },
+                  { name: 'GitHub', icon: Github, href: githubUrl },
+                  { name: 'Email', icon: Mail, href: `mailto:${email}` }].
                   map((social) => {
                     const IconComponent = social.icon;
                     return (
@@ -277,6 +288,7 @@ const Contact = () => {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={social.name}
                         className="flex items-center justify-center w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full hover:border-purple-400/50 transition-all duration-300 group"
                         whileHover={{ scale: 1.1, y: -2 }}>
 

@@ -60,7 +60,7 @@ const Skills = () => {
           stiffness: 100,
           damping: 25
         }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '0px 0px 200px 0px' }}
         whileHover={{ 
           y: -25, 
           scale: 1.1,
@@ -240,7 +240,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           className="text-center mb-20 sm:mb-28"
         >
           <motion.div
