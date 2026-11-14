@@ -81,15 +81,18 @@ const Hero = () => {
           
           {/* Strategic watermark coverage overlays */}
           {/* Bottom right corner overlay - where Spline watermark typically appears */}
-          <div className="absolute bottom-0 right-0 w-32 h-16 bg-gradient-to-tl from-black via-black/80 to-transparent z-10" />
-          
+          <div className="absolute bottom-0 right-0 w-80 h-40 bg-gradient-to-tl from-black/40 via-black/70 to-transparent z-10" />
+
+          {/* Additional comprehensive coverage overlay */}
+          <div className="absolute bottom-0 right-0 w-96 h-48 bg-gradient-to-br from-transparent via-black/30 to-black/60 z-10" />
+
           {/* Additional corner coverage with decorative elements */}
           <div className="absolute bottom-2 right-2 z-20">
             <motion.div
-              className="w-6 h-6 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full opacity-80"
+              className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full opacity-95"
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.8, 1, 0.8]
+                scale: [1, 1.4, 1],
+                opacity: [0.95, 1, 0.95]
               }}
               transition={{
                 duration: 2,
@@ -98,14 +101,14 @@ const Hero = () => {
               }}
             />
           </div>
-          
+
           {/* Enhanced decorative overlay elements */}
           <div className="absolute bottom-4 right-8 z-20">
             <motion.div
-              className="w-3 h-3 bg-cyan-400 rounded-full opacity-70"
+              className="w-5 h-5 bg-cyan-400 rounded-full opacity-90"
               animate={{
-                y: [0, -10, 0],
-                opacity: [0.7, 1, 0.7]
+                y: [0, -15, 0],
+                opacity: [0.9, 1, 0.9]
               }}
               transition={{
                 duration: 3,
@@ -114,12 +117,28 @@ const Hero = () => {
               }}
             />
           </div>
-          
+
+          {/* Additional floating elements for seamless integration */}
+          <div className="absolute bottom-6 right-16 z-20">
+            <motion.div
+              className="w-3 h-3 bg-blue-400 rounded-full opacity-80"
+              animate={{
+                scale: [1, 1.5, 1],
+                opacity: [0.8, 1, 0.8]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </div>
+
           {/* Bottom edge gradient overlay for seamless blending */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
-          
+          <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-black/40 via-black/60 to-transparent z-10" />
+
           {/* Right edge subtle overlay */}
-          <div className="absolute top-0 bottom-0 right-0 w-8 bg-gradient-to-l from-black/40 to-transparent z-10" />
+          <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-black/60 to-transparent z-10" />
         </div>
       </div>
 
@@ -137,23 +156,24 @@ const Hero = () => {
             style={{ border: 'none' }}
           />
           
-          {/* Mobile watermark coverage - more comprehensive */}
-          <div className="absolute bottom-0 right-0 w-40 h-20 bg-gradient-to-tl from-black via-black/90 to-transparent z-10" />
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
+          {/* Mobile watermark coverage - comprehensive and seamless */}
+          <div className="absolute bottom-0 right-0 w-96 h-48 bg-gradient-to-tl from-black/50 via-black/70 to-transparent z-10" />
+          <div className="absolute bottom-0 right-0 w-80 h-40 bg-gradient-to-br from-transparent via-black/40 to-black/80 z-10" />
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black/60 via-black/40 to-transparent z-10" />
           
           {/* Mobile decorative elements to mask watermark area */}
           <div className="absolute bottom-3 right-3 z-20">
             <motion.div
-              className="flex space-x-2"
+              className="flex space-x-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
             >
               <motion.div
-                className="w-2 h-2 bg-purple-400 rounded-full"
+                className="w-4 h-4 bg-purple-400 rounded-full"
                 animate={{
-                  scale: [1, 1.3, 1],
-                  opacity: [0.6, 1, 0.6]
+                  scale: [1, 1.5, 1],
+                  opacity: [0.8, 1, 0.8]
                 }}
                 transition={{
                   duration: 2,
@@ -162,16 +182,42 @@ const Hero = () => {
                 }}
               />
               <motion.div
-                className="w-2 h-2 bg-cyan-400 rounded-full"
+                className="w-4 h-4 bg-cyan-400 rounded-full"
                 animate={{
-                  scale: [1, 1.3, 1],
-                  opacity: [0.6, 1, 0.6]
+                  scale: [1, 1.5, 1],
+                  opacity: [0.8, 1, 0.8]
                 }}
                 transition={{
                   duration: 2,
                   repeat: Infinity,
                   ease: "easeInOut",
                   delay: 0.5
+                }}
+              />
+              <motion.div
+                className="w-3 h-3 bg-blue-400 rounded-full"
+                animate={{
+                  scale: [1, 1.6, 1],
+                  opacity: [0.9, 1, 0.9]
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              />
+              <motion.div
+                className="w-2 h-2 bg-pink-400 rounded-full"
+                animate={{
+                  scale: [1, 1.7, 1],
+                  opacity: [0.85, 1, 0.85]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.5
                 }}
               />
             </motion.div>
