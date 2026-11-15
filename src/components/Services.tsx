@@ -1,5 +1,4 @@
 
-import React from 'react'
 import { motion } from 'framer-motion'
 
 const Services = () => {
@@ -33,7 +32,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -51,7 +50,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '0px 0px 200px 0px' }}
               className="group"
             >
               <motion.div

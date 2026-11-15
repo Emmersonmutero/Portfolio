@@ -7,7 +7,7 @@ const About = () => {
     { title: 'Experience', value: '2+ Years', icon: '💼' },
     { title: 'Technologies', value: '6+ Tools', icon: '⚡' },
     { title: 'Specialties', value: '3D Web Design', icon: '🎨' },
-    { title: 'Achievements', value: '5+ Projects', icon: '🏆' },
+    { title: 'Delivered', value: '5+ Projects', icon: '🏆' },
   ]
 
   return (
@@ -17,7 +17,7 @@ const About = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -30,7 +30,7 @@ const About = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           className="max-w-4xl mx-auto text-center space-y-6 mb-16"
         >
           <h3 className="text-3xl font-bold">Passionate Developer</h3>
@@ -50,7 +50,7 @@ const About = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {highlights.map((item) => (

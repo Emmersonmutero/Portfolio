@@ -1,5 +1,5 @@
 
-import React from 'react'
+import type { ComponentType } from 'react'
 import { motion } from 'framer-motion'
 import { Globe, Palette, Zap, Atom, Wind, Box, Rocket, Database, Flame, Figma, Code2 } from 'lucide-react'
 
@@ -10,7 +10,7 @@ type IconProps = {
 
 type Skill = {
   name: string
-  icon: React.ComponentType<IconProps>
+  icon: ComponentType<IconProps>
   category: string
   color: string
 }
@@ -52,7 +52,7 @@ const Skills = () => {
           stiffness: 100,
           damping: 25
         }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '0px 0px 200px 0px' }}
         whileHover={{ 
           y: -25, 
           scale: 1.1,
@@ -221,13 +221,14 @@ const Skills = () => {
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           className="text-center mb-20 sm:mb-28"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.3 }}
+            viewport={{ once: true, margin: '0px 0px 200px 0px' }}
             className="relative inline-block mb-8 sm:mb-10"
           >
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
@@ -242,12 +243,14 @@ const Skills = () => {
                   initial={{ width: 0 }}
                   whileInView={{ width: '100%' }}
                   transition={{ duration: 2, delay: 0.8 }}
+                  viewport={{ once: true, margin: '0px 0px 200px 0px' }}
                 />
                 <motion.div
                   className="absolute -bottom-3 sm:-bottom-5 left-2 right-2 h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent rounded-full"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 1.5, delay: 1.5 }}
+                  viewport={{ once: true, margin: '0px 0px 200px 0px' }}
                 />
               </span>
             </h2>
@@ -258,6 +261,7 @@ const Skills = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.8 }}
+            viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           >
             A comprehensive arsenal of cutting-edge technologies and creative tools that power extraordinary digital experiences
           </motion.p>
